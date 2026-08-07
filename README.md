@@ -45,13 +45,7 @@ npm run build
 Le build statique est généré dans `out/`.
 
 ## Déploiement
-
-Le workflow `.github/workflows/deploy.yml` compile et publie automatiquement le
-site sur GitHub Pages à chaque push sur `main`.
-
-Une fois le dépôt public `Bocoum1/portfolio` créé, activer **GitHub Actions** comme
-source dans `Settings > Pages`. Le site sera ensuite disponible à l'adresse :
-
+Suivre ce lien pour voir mon portfolio
 ```text
 https://bocoum1.github.io/portfolio/
 ```
