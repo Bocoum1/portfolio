@@ -124,7 +124,7 @@ export default function Home() {
           <div className="project-copy">
             <div className="project-meta">
               <span>01</span>
-              <span>Produit full-stack · En développement</span>
+              <span>Produit full-stack · Démonstration en ligne</span>
             </div>
             <h3>Atlas</h3>
             <p className="project-lead">
@@ -140,6 +140,11 @@ export default function Home() {
               <li>Matching hybride et recherche sémantique</li>
               <li>Authentification Firebase et socle de production documenté</li>
             </ul>
+            <div className="project-links">
+              <a href="https://atlas-sigma-gold.vercel.app/" target="_blank" rel="noreferrer">
+                Ouvrir l&apos;application <ArrowUpRight />
+              </a>
+            </div>
             <div className="tags">
               <span>Next.js</span><span>FastAPI</span><span>PostgreSQL</span><span>Qdrant</span>
             </div>
