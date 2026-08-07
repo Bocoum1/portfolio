@@ -1,5 +1,8 @@
+import Image from "next/image";
+
 const githubUrl = "https://github.com/Bocoum1";
 const email = "bocoumoumar535@gmail.com";
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const ArrowUpRight = () => (
   <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18">
@@ -288,7 +291,22 @@ export default function Home() {
         <p className="eyebrow"><span /> À propos</p>
         <div className="about-grid">
           <h2>Curieux du système entier, attentif à la personne qui l&apos;utilise.</h2>
-          <div>
+          <figure className="portrait-card">
+            <div className="portrait-frame">
+              <Image
+                src={`${basePath}/amadou-bocoum.webp`}
+                alt="Portrait d'Amadou Bocoum"
+                width="800"
+                height="1000"
+                unoptimized
+              />
+            </div>
+            <figcaption>
+              <strong>Amadou Bocoum</strong>
+              <span>Data &amp; AI Engineer</span>
+            </figcaption>
+          </figure>
+          <div className="about-copy">
             <p>
               Mon travail se situe à l&apos;intersection de la donnée, de l&apos;intelligence
               artificielle et du développement produit. J&apos;aime autant comprendre un besoin
