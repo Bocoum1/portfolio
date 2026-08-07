@@ -55,11 +55,3 @@ source dans `Settings > Pages`. Le site sera ensuite disponible à l'adresse :
 ```text
 https://bocoum1.github.io/portfolio/
 ```
-
-## Personnalisation restante
-
-Avant la publication définitive, ajouter si nécessaire :
-
-- le lien LinkedIn ;
-- un CV public au format PDF ;
-- le domaine final dans les métadonnées et le sitemap.
