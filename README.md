@@ -31,6 +31,10 @@ npm run dev
 
 Ouvrir ensuite [http://localhost:3000](http://localhost:3000).
 
+Le serveur de développement utilise Webpack avec une surveillance par sondage afin
+de rester fiable sur les systèmes Linux où la limite `inotify` est déjà sollicitée
+par d'autres projets.
+
 ## Vérification
 
 ```bash
