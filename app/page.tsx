@@ -65,8 +65,8 @@ export default function Home() {
           </h1>
           <p className="hero-intro">
             Je suis <strong>Amadou Bocoum</strong>, Data &amp; AI Engineer. Je conçois des
-            applications qui rendent les systèmes complexes plus compréhensibles,
-            actionnables et respectueux des données.
+            systèmes de données et d&apos;IA qui rendent l&apos;information exploitable pour
+            les utilisateurs et les organisations.
           </p>
           <div className="hero-actions">
             <a className="button button-primary" href="#projets">
