@@ -127,8 +127,8 @@ export default function Home() {
       <section className="projects section-shell" id="projets">
         <div className="section-heading">
           <div>
-            <p className="eyebrow"><span /> Travaux sélectionnés</p>
-            <h2>Trois projets.<br />Trois problèmes réels.</h2>
+            <p className="eyebrow"><span /> Selected work</p>
+            <h2>Quatre projets.<br />Quatre problèmes réels.</h2>
           </div>
           <p>
             Une sélection qui montre la chaîne complète : comprendre le besoin,
@@ -165,25 +165,25 @@ export default function Home() {
               <span>Next.js</span><span>FastAPI</span><span>PostgreSQL</span><span>Qdrant</span>
             </div>
           </div>
-          <div className="project-visual atlas-visual" aria-hidden="true">
-            <div className="atlas-topbar"><span /><span /><span /></div>
-            <div className="atlas-search">Rechercher une compétence, une université...</div>
-            <div className="profile-card profile-one">
-              <div className="avatar">ML</div><div><strong>Marie L.</strong><small>Data Science · Paris</small></div>
-              <span className="match">92%</span>
+          <a
+            className="project-visual screenshot-visual atlas-screenshot"
+            href="https://atlas-sigma-gold.vercel.app/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Ouvrir la démonstration Atlas"
+          >
+            <div className="screenshot-window">
+              <div className="screenshot-bar"><i /><i /><i /><span>atlas-sigma-gold.vercel.app</span></div>
+              <Image
+                src={`${basePath}/projects/atlas.webp`}
+                alt="Page d'accueil et création de compte de l'application Atlas"
+                width="1280"
+                height="800"
+                unoptimized
+              />
             </div>
-            <div className="profile-card profile-two">
-              <div className="avatar alt">YK</div><div><strong>Yanis K.</strong><small>Product · Lyon</small></div>
-              <span className="match">87%</span>
-            </div>
-            <svg className="network-lines" viewBox="0 0 560 260">
-              <path d="M80 180 C180 75 345 220 480 90" />
-              <path d="M120 60 C260 180 360 35 505 175" />
-              <circle cx="80" cy="180" r="8" /><circle cx="480" cy="90" r="8" />
-              <circle cx="120" cy="60" r="8" /><circle cx="505" cy="175" r="8" />
-              <circle cx="285" cy="130" r="13" />
-            </svg>
-          </div>
+            <span className="screenshot-caption">Application en ligne <ArrowUpRight /></span>
+          </a>
         </article>
 
         <article className="project project-rag">
@@ -264,25 +264,78 @@ export default function Home() {
               <span>R</span><span>Shiny</span><span>Plotly</span><span>Leaflet</span>
             </div>
           </div>
-          <div className="project-visual ukra-visual" aria-hidden="true">
-            <div className="dashboard-head">UKRA <span>2021—2022</span></div>
-            <div className="kpi-row">
-              <div><small>ACCIDENTS</small><strong>307 973</strong></div>
-              <div><small>VICTIMES</small><strong>417 883</strong></div>
-              <div><small>GRAVE / FATAL</small><strong>14,5%</strong></div>
+          <a
+            className="project-visual screenshot-visual ukra-screenshot"
+            href="https://datascienceappli.shinyapps.io/Securite_routiere/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Ouvrir le tableau de bord UKRA"
+          >
+            <div className="screenshot-window">
+              <div className="screenshot-bar"><i /><i /><i /><span>UKRA · R Shiny</span></div>
+              <Image
+                src={`${basePath}/projects/ukra.webp`}
+                alt="Vue globale du tableau de bord R Shiny UKRA"
+                width="1440"
+                height="760"
+                unoptimized
+              />
             </div>
-            <div className="chart-panel">
-              <small>ÉVOLUTION MENSUELLE</small>
-              <svg viewBox="0 0 480 160">
-                <path className="grid" d="M0 30H480M0 80H480M0 130H480" />
-                <path className="line" d="M0 88 28 120 55 80 82 96 110 74 138 69 166 60 194 78 222 70 250 42 278 74 306 118 334 132 362 110 390 98 418 106 446 86 480 76" />
-              </svg>
+            <span className="screenshot-caption">Dashboard interactif <ArrowUpRight /></span>
+          </a>
+        </article>
+
+        <article className="project project-pathfinding">
+          <div className="project-copy">
+            <div className="project-meta">
+              <span>04</span>
+              <span>Algorithmique · Laboratoire Julia</span>
             </div>
-            <div className="bar-panel">
-              <small>PAR GRAVITÉ</small>
-              <div className="bars"><i /><i /><i /></div>
+            <h3>Pathfinding Lab</h3>
+            <p className="project-lead">
+              Voir un algorithme réfléchir, étape par étape.
+            </p>
+            <p>
+              Un laboratoire pédagogique qui compare cinq stratégies de recherche sur des
+              cartes pondérées. Julia calcule les traces réelles, puis l&apos;interface anime
+              l&apos;exploration et la reconstruction du chemin.
+            </p>
+            <ul className="project-points">
+              <li>BFS, Dijkstra, A*, glouton et A* pondéré</li>
+              <li>Coût, étapes, états explorés et terrains pondérés</li>
+              <li>Tests automatisés et déploiement GitHub Pages</li>
+            </ul>
+            <div className="project-links">
+              <a href="https://bocoum1.github.io/Pathfinding-Lab/" target="_blank" rel="noreferrer">
+                Lancer la démonstration <ArrowUpRight />
+              </a>
+              <a href="https://github.com/Bocoum1/Pathfinding-Lab" target="_blank" rel="noreferrer">
+                Code source <GithubMark />
+              </a>
+            </div>
+            <div className="tags">
+              <span>Julia</span><span>Algorithmes</span><span>A*</span><span>GitHub Actions</span>
             </div>
           </div>
+          <a
+            className="project-visual screenshot-visual pathfinding-screenshot"
+            href="https://bocoum1.github.io/Pathfinding-Lab/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Lancer la démonstration Pathfinding Lab"
+          >
+            <div className="screenshot-window">
+              <div className="screenshot-bar"><i /><i /><i /><span>A* · exploration 15 / 43</span></div>
+              <Image
+                src={`${basePath}/projects/pathfinding-lab.webp`}
+                alt="Animation de l'exploration A* dans Pathfinding Lab"
+                width="1440"
+                height="676"
+                unoptimized
+              />
+            </div>
+            <span className="screenshot-caption">Démonstration interactive <ArrowUpRight /></span>
+          </a>
         </article>
       </section>
 
