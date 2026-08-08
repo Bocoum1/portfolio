@@ -462,6 +462,7 @@ svg {
 }
 
 .project {
+  position: relative;
   min-height: 680px;
   margin-bottom: 38px;
   display: grid;
@@ -469,6 +470,25 @@ svg {
   border: 1px solid var(--line);
   background: var(--paper-soft);
   overflow: hidden;
+}
+
+.project-featured {
+  border-color: rgba(18, 63, 75, 0.42);
+  box-shadow: 12px 14px 0 rgba(18, 63, 75, 0.12);
+}
+
+.project-featured::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 3;
+  padding: 9px 16px;
+  color: var(--paper-soft);
+  background: var(--orange);
+  content: "PROJET PHARE";
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
 }
 
 .project:nth-of-type(odd) {
@@ -612,8 +632,18 @@ svg {
 }
 
 .atlas-screenshot { background: #dce7b7; }
+.moremovies-screenshot {
+  background:
+    radial-gradient(circle at 88% 12%, rgba(239, 138, 97, 0.34), transparent 25%),
+    var(--navy);
+}
 .ukra-screenshot { background: #c96337; }
 .pathfinding-screenshot { background: var(--navy); }
+
+.moremovies-screenshot .screenshot-window {
+  box-shadow: 16px 18px 0 rgba(0, 0, 0, 0.26);
+  transform: rotate(1deg);
+}
 
 .screenshot-window {
   position: relative;
@@ -671,6 +701,7 @@ svg {
 }
 
 .ukra-screenshot .screenshot-caption,
+.moremovies-screenshot .screenshot-caption,
 .pathfinding-screenshot .screenshot-caption { color: var(--paper-soft); }
 
 .rag-visual {
@@ -926,6 +957,8 @@ svg {
   .section-heading { margin-bottom: 50px; }
   .section-heading h2, .approach h2, .about h2 { font-size: clamp(47px, 14vw, 64px); }
   .project { min-height: auto; }
+  .project-featured { box-shadow: 7px 8px 0 rgba(18, 63, 75, 0.12); }
+  .project-featured::after { padding: 7px 10px; font-size: 8px; }
   .project-copy { padding: 34px 26px 45px; }
   .project-meta { align-items: flex-start; gap: 15px; }
   .project-meta span:last-child { max-width: 190px; text-align: right; }

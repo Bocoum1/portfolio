@@ -119,7 +119,7 @@ export default function Home() {
 
         <div className="hero-foot reveal reveal-3">
           <span>Basé en France</span>
-          <span>Python · R · TypeScript</span>
+          <span>Python · SQL · R · TypeScript</span>
           <span>Projets sélectionnés 2026</span>
         </div>
       </section>
@@ -128,18 +128,71 @@ export default function Home() {
         <div className="section-heading">
           <div>
             <p className="eyebrow"><span /> Selected work</p>
-            <h2>Quatre projets.<br />Quatre problèmes réels.</h2>
+            <h2>Cinq projets.<br />Cinq problèmes réels.</h2>
           </div>
           <p>
-            Une sélection qui montre la chaîne complète : comprendre le besoin,
-            construire le système et présenter une solution utilisable.
+            Une sélection qui relie ingénierie des données, IA, développement produit
+            et analyse décisionnelle à des besoins concrets.
           </p>
         </div>
+
+        <article className="project project-moremovies project-featured">
+          <div className="project-copy">
+            <div className="project-meta">
+              <span>01</span>
+              <span>Data engineering · Business Intelligence</span>
+            </div>
+            <h3>MoreMovies</h3>
+            <p className="project-lead">
+              Réconcilier trois systèmes incompatibles pour créer une vision métier commune.
+            </p>
+            <p>
+              Une chaîne décisionnelle complète qui harmonise les données de trois enseignes,
+              construit un entrepôt ROLAP et expose des analyses multidimensionnelles sur les
+              ventes, les locations, les produits et les profils clients.
+            </p>
+            <ul className="project-points">
+              <li>40 transformations Pentaho PDI et 37 tables SQL</li>
+              <li>4 dimensions, 2 tables de faits et 3 agrégats mensuels</li>
+              <li>3 cubes Mondrian, 5 requêtes MDX et exports Power BI</li>
+            </ul>
+            <div className="project-links">
+              <a href="https://github.com/Bocoum1/moremovies" target="_blank" rel="noreferrer">
+                Explorer le projet <ArrowUpRight />
+              </a>
+              <a href="https://github.com/Bocoum1/moremovies#architecture" target="_blank" rel="noreferrer">
+                Voir l&apos;architecture <GithubMark />
+              </a>
+            </div>
+            <div className="tags">
+              <span>MySQL</span><span>Pentaho PDI</span><span>Mondrian</span><span>MDX</span><span>Power BI</span>
+            </div>
+          </div>
+          <a
+            className="project-visual screenshot-visual moremovies-screenshot"
+            href="https://github.com/Bocoum1/moremovies"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Explorer le dépôt MoreMovies"
+          >
+            <div className="screenshot-window">
+              <div className="screenshot-bar"><i /><i /><i /><span>MoreMovies · architecture décisionnelle</span></div>
+              <Image
+                src={`${basePath}/projects/moremovies.svg`}
+                alt="Architecture de la plateforme décisionnelle MoreMovies"
+                width="1400"
+                height="650"
+                unoptimized
+              />
+            </div>
+            <span className="screenshot-caption">Architecture et code source <ArrowUpRight /></span>
+          </a>
+        </article>
 
         <article className="project project-atlas">
           <div className="project-copy">
             <div className="project-meta">
-              <span>01</span>
+              <span>02</span>
               <span>Produit full-stack · Démonstration en ligne</span>
             </div>
             <h3>Atlas</h3>
@@ -189,7 +242,7 @@ export default function Home() {
         <article className="project project-rag">
           <div className="project-copy">
             <div className="project-meta">
-              <span>02</span>
+              <span>03</span>
               <span>IA locale · Open source</span>
             </div>
             <h3>Local Hybrid RAG</h3>
@@ -235,7 +288,7 @@ export default function Home() {
         <article className="project project-ukra">
           <div className="project-copy">
             <div className="project-meta">
-              <span>03</span>
+              <span>04</span>
               <span>Business Intelligence · Projet en binôme</span>
             </div>
             <h3>UKRA</h3>
@@ -288,7 +341,7 @@ export default function Home() {
         <article className="project project-pathfinding">
           <div className="project-copy">
             <div className="project-meta">
-              <span>04</span>
+              <span>05</span>
               <span>Algorithmique · Laboratoire Julia</span>
             </div>
             <h3>Pathfinding Lab</h3>
