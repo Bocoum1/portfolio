@@ -81,6 +81,22 @@ export default function Home() {
         <div className="hero-visual reveal reveal-2" aria-label="Aperçu des domaines d'expertise">
           <div className="orbit orbit-one" />
           <div className="orbit orbit-two" />
+          <figure className="hero-portrait">
+            <div className="hero-portrait-frame">
+              <Image
+                src={`${basePath}/amadou-bocoum.webp`}
+                alt="Portrait d'Amadou Bocoum"
+                width="800"
+                height="1000"
+                priority
+                unoptimized
+              />
+            </div>
+            <figcaption>
+              <strong>Amadou Bocoum</strong>
+              <span>Data &amp; AI Engineer</span>
+            </figcaption>
+          </figure>
           <div className="signal-card signal-card-main">
             <span className="signal-label">Fil conducteur</span>
             <strong>discover → understand → act</strong>
@@ -296,21 +312,6 @@ export default function Home() {
         <p className="eyebrow"><span /> À propos</p>
         <div className="about-grid">
           <h2>Curieux du système entier, attentif à la personne qui l&apos;utilise.</h2>
-          <figure className="portrait-card">
-            <div className="portrait-frame">
-              <Image
-                src={`${basePath}/amadou-bocoum.webp`}
-                alt="Portrait d'Amadou Bocoum"
-                width="800"
-                height="1000"
-                unoptimized
-              />
-            </div>
-            <figcaption>
-              <strong>Amadou Bocoum</strong>
-              <span>Data &amp; AI Engineer</span>
-            </figcaption>
-          </figure>
           <div className="about-copy">
             <p>
               Mon travail se situe à l&apos;intersection de la donnée, de l&apos;intelligence
