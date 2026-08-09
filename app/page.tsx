@@ -59,7 +59,7 @@ export default function Home() {
 
       <section className="hero" id="top">
         <div className="hero-copy reveal reveal-1">
-          <p className="eyebrow"><span /> Data, IA &amp; produit</p>
+          <p className="eyebrow"><span /> Data, statistique, IA &amp; produit</p>
           <h1>
             Je transforme les données en produits <em>utiles.</em>
           </h1>

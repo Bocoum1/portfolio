@@ -4,13 +4,15 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Amadou Bocoum | Data & AI Engineer",
   description:
-    "Portfolio d'Amadou Bocoum : data engineering, produits IA, applications full-stack et Business Intelligence.",
+    "Portfolio d'Amadou Bocoum : data engineering, analyse statistique, produits IA et applications full-stack.",
   keywords: [
     "Amadou Bocoum",
     "Data Engineer",
     "AI Engineer",
     "ETL",
     "Data Warehouse",
+    "Statistique",
+    "Analyse statistique",
     "RAG",
     "Business Intelligence",
     "Machine Learning",
@@ -19,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Amadou Bocoum | Data & AI Engineer",
     description:
-      "Des sources aux produits : data engineering, IA locale, applications full-stack et analyse décisionnelle.",
+      "Des sources aux produits : data engineering, statistique, IA locale et analyse décisionnelle.",
     type: "website",
     locale: "fr_FR",
   },
