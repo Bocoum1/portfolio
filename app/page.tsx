@@ -22,21 +22,48 @@ const GithubMark = () => (
 const skillGroups = [
   {
     number: "01",
-    title: "Construire",
-    text: "Des applications complètes, de l'interface à l'API et aux données.",
-    skills: "Next.js · FastAPI · PostgreSQL · Firebase",
+    title: "Modéliser",
+    text: "Formuler une question statistique, choisir les hypothèses et comprendre l'estimation.",
+    skills: "Inférence · GLM · Estimation non paramétrique · R",
   },
   {
     number: "02",
-    title: "Raisonner",
-    text: "Des systèmes IA inspectables qui rendent leurs sources visibles.",
-    skills: "Python · RAG · FAISS · Ollama · Qdrant",
+    title: "Évaluer",
+    text: "Comparer les modèles, examiner les erreurs et distinguer ajustement et généralisation.",
+    skills: "Machine learning · Deep learning · Python · PyTorch",
   },
   {
     number: "03",
-    title: "Décider",
-    text: "Des analyses qui relient une question métier à des indicateurs utiles.",
-    skills: "R · Shiny · Plotly · Leaflet · BI",
+    title: "Expliquer",
+    text: "Rendre les résultats lisibles, reproductibles et utiles, sans masquer leurs limites.",
+    skills: "Visualisation · Monte-Carlo · SQL · Shiny",
+  },
+];
+
+const statisticalProjects = [
+  {
+    id: "01",
+    category: "Estimation non paramétrique",
+    title: "Apprendre une variation locale.",
+    description: "Estimer la dérivée d'une fonction de régression bruitée avec trois estimateurs récursifs à noyau. Comparer les erreurs plutôt que seulement regarder les courbes.",
+    image: "kernel-derivative.png",
+    alt: "Dérivée analytique et estimations à noyau sur un même échantillon simulé",
+    repo: "recursive-kernel-estimation",
+    evidence: "3 noyaux · 200 répétitions Monte-Carlo · biais et MSE",
+    note: "Simulation à vérité connue. Fonctions originales vérifiées et expérience complémentaire reproductible.",
+    tags: ["R", "Noyaux", "Biais / variance", "Simulation"],
+  },
+  {
+    id: "02",
+    category: "Modèles linéaires généralisés",
+    title: "Comparer trois liens binomiaux.",
+    description: "Passer de la vraisemblance à une implémentation du scoring de Fisher, puis comparer logit, probit et cloglog sur une étude dose-réponse.",
+    image: "glm-dose-response.png",
+    alt: "Proportions observées et courbes logit, probit et complémentaire log-log ajustées",
+    repo: "binomia-glm",
+    evidence: "3 liens · calcul manuel · contrôle avec stats::glm",
+    note: "Comparaison d'ajustement sur huit groupes, sans revendication de performance sur des données de test.",
+    tags: ["R", "GLM", "Vraisemblance", "Diagnostics"],
   },
 ];
 
@@ -59,15 +86,17 @@ export default function Home() {
 
       <section className="hero" id="top">
         <div className="hero-copy reveal reveal-1">
-          <p className="eyebrow"><span /> Data, statistique, IA &amp; produit</p>
+          <p className="eyebrow"><span /> Data science · Statistiques · ML &amp; DL</p>
           <h1>
-            Je transforme les données en produits <em>utiles.</em>
+            Comprendre les données. Évaluer les <em>modèles.</em>
           </h1>
           <p className="hero-intro">
-            Je suis <strong>Amadou Bocoum</strong>, Data &amp; AI Engineer. Je conçois des
-            systèmes de données et d&apos;IA qui rendent l&apos;information exploitable pour
-            les utilisateurs et les organisations.
+            Je suis <strong>Amadou Bocoum</strong>, étudiant en M2 Data Science et
+            Modélisation Statistique à l&apos;Université Bretagne Sud. Je m&apos;intéresse
+            à l&apos;inférence statistique, au machine learning et au deep learning :
+            comprendre les méthodes, les mettre en œuvre et examiner leurs résultats.
           </p>
+          <p className="availability">Stage de fin d&apos;études · Janvier 2027 · 4 à 6 mois</p>
           <div className="hero-actions">
             <a className="button button-primary" href="#projets">
               Découvrir mes projets <span aria-hidden="true">↓</span>
@@ -78,7 +107,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="hero-visual reveal reveal-2" aria-label="Aperçu des domaines d'expertise">
+        <div className="hero-visual reveal reveal-2" aria-label="Statistiques, machine learning et deep learning">
           <div className="orbit orbit-one" />
           <div className="orbit orbit-two" />
           <figure className="hero-portrait">
@@ -94,32 +123,32 @@ export default function Home() {
             </div>
             <figcaption>
               <strong>Amadou Bocoum</strong>
-              <span>Data &amp; AI Engineer</span>
+              <span>Data Science &amp; Statistiques</span>
             </figcaption>
           </figure>
           <div className="signal-card signal-card-main">
             <span className="signal-label">Fil conducteur</span>
-            <strong>discover → understand → act</strong>
-            <p>Partir d&apos;un besoin réel, rendre le système lisible, livrer un usage.</p>
+            <strong>question → modèle → validation</strong>
+            <p>Poser des hypothèses, mesurer les erreurs, expliquer les limites.</p>
           </div>
           <div className="signal-card signal-card-data">
             <span className="pulse" />
-            <small>DATA</small>
-            <strong>Structurer</strong>
+            <small>STATS</small>
+            <strong>Estimer</strong>
           </div>
           <div className="signal-card signal-card-ai">
-            <small>AI</small>
-            <strong>Augmenter</strong>
+            <small>ML</small>
+            <strong>Évaluer</strong>
           </div>
           <div className="signal-card signal-card-bi">
-            <small>BI</small>
-            <strong>Décider</strong>
+            <small>DL</small>
+            <strong>Apprendre</strong>
           </div>
         </div>
 
         <div className="hero-foot reveal reveal-3">
           <span>Basé en France</span>
-          <span>Python · SQL · R · TypeScript</span>
+          <span>Python · R · PyTorch · SQL</span>
           <span>Projets sélectionnés 2026</span>
         </div>
       </section>
@@ -127,19 +156,60 @@ export default function Home() {
       <section className="projects section-shell" id="projets">
         <div className="section-heading">
           <div>
-            <p className="eyebrow"><span /> Selected work</p>
-            <h2>Cinq projets.<br />Cinq problèmes réels.</h2>
+            <p className="eyebrow"><span /> Travaux sélectionnés</p>
+            <h2>Des hypothèses.<br />Des résultats vérifiables.</h2>
           </div>
           <p>
-            Une sélection qui relie ingénierie des données, IA, développement produit
-            et analyse décisionnelle à des besoins concrets.
+            D&apos;abord mes travaux statistiques : code, rapports et simulations.
+            Puis des applications qui montrent comment je prépare les données
+            et rends les analyses accessibles.
           </p>
         </div>
 
-        <article className="project project-moremovies project-featured">
+        <div className="research-grid">
+          {statisticalProjects.map((project) => (
+            <article className="research-card" key={project.repo}>
+              <div className="research-body">
+                <p className="research-category">{project.id} / {project.category}</p>
+                <h3>{project.title}</h3>
+                <p>{project.description}</p>
+              </div>
+              <a href={`${githubUrl}/${project.repo}`} target="_blank" rel="noreferrer"
+                 aria-label={`Consulter le projet : ${project.category}`}>
+                <Image src={`${basePath}/projects/${project.image}`} alt={project.alt}
+                       width={1440} height={900} unoptimized />
+              </a>
+              <div className="research-body research-evidence">
+                <strong>{project.evidence}</strong>
+                <p>{project.note}</p>
+                <p className="research-credit">Travail en binôme avec Anya Levêque.</p>
+                <div className="tags">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+                <div className="project-links">
+                  <a href={`${githubUrl}/${project.repo}`} target="_blank" rel="noreferrer">
+                    Code et résultats <ArrowUpRight />
+                  </a>
+                  <a href={`${githubUrl}/${project.repo}/tree/main/reports`} target="_blank" rel="noreferrer">
+                    Rapports <ArrowUpRight />
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div className="section-heading complementary-heading">
+          <div>
+            <p className="eyebrow"><span /> Compétences complémentaires</p>
+            <h2>De l&apos;analyse<br />à l&apos;application.</h2>
+          </div>
+          <p>Business intelligence, recherche documentaire et développement :
+            des outils pour préparer les données et rendre les résultats accessibles.</p>
+        </div>
+
+        <article className="project project-moremovies">
           <div className="project-copy">
             <div className="project-meta">
-              <span>01</span>
+              <span>03</span>
               <span>Data engineering · Business Intelligence</span>
             </div>
             <h3>MoreMovies</h3>
@@ -192,7 +262,7 @@ export default function Home() {
         <article className="project project-atlas">
           <div className="project-copy">
             <div className="project-meta">
-              <span>02</span>
+              <span>04</span>
               <span>Produit full-stack · Démonstration en ligne</span>
             </div>
             <h3>Atlas</h3>
@@ -242,7 +312,7 @@ export default function Home() {
         <article className="project project-rag">
           <div className="project-copy">
             <div className="project-meta">
-              <span>03</span>
+              <span>05</span>
               <span>IA locale · Open source</span>
             </div>
             <h3>Local Hybrid RAG</h3>
@@ -288,7 +358,7 @@ export default function Home() {
         <article className="project project-ukra">
           <div className="project-copy">
             <div className="project-meta">
-              <span>04</span>
+              <span>06</span>
               <span>Business Intelligence · Projet en binôme</span>
             </div>
             <h3>UKRA</h3>
@@ -341,7 +411,7 @@ export default function Home() {
         <article className="project project-pathfinding">
           <div className="project-copy">
             <div className="project-meta">
-              <span>05</span>
+              <span>07</span>
               <span>Algorithmique · Laboratoire Julia</span>
             </div>
             <h3>Pathfinding Lab</h3>
@@ -395,11 +465,11 @@ export default function Home() {
       <section className="approach section-shell" id="approche">
         <div className="approach-intro">
           <p className="eyebrow light"><span /> Manière de travailler</p>
-          <h2>La technologie vient après la question.</h2>
+          <h2>Un modèle ne suffit pas. Il faut savoir l&apos;évaluer.</h2>
           <p>
-            Je cherche d&apos;abord ce qui doit devenir plus simple pour l&apos;utilisateur.
-            Les modèles, les architectures et les visualisations servent ensuite cette
-            intention, avec une attention particulière à la clarté et à la confidentialité.
+            La question guide le choix de la méthode. Je cherche à relier les hypothèses
+            mathématiques au code, à vérifier les calculs et à distinguer ce que les
+            résultats montrent de ce qu&apos;ils ne permettent pas de conclure.
           </p>
         </div>
         <div className="skill-grid">
@@ -417,16 +487,18 @@ export default function Home() {
       <section className="about section-shell">
         <p className="eyebrow"><span /> À propos</p>
         <div className="about-grid">
-          <h2>Curieux du système entier, attentif à la personne qui l&apos;utilise.</h2>
+          <h2>Une formation mathématique, le goût de l&apos;expérimentation.</h2>
           <div className="about-copy">
             <p>
-              Mon travail se situe à l&apos;intersection de la donnée, de l&apos;intelligence
-              artificielle et du développement produit. J&apos;aime autant comprendre un besoin
-              métier que concevoir le pipeline, l&apos;API ou l&apos;interface qui permettra d&apos;y répondre.
+              Après une licence en mathématiques et informatique, je poursuis un master
+              en Data Science et Modélisation Statistique. Mes travaux portent notamment
+              sur l&apos;estimation non paramétrique, les GLM et l&apos;analyse de données.
             </p>
             <p>
-              Je construis actuellement des projets autour de la recherche sémantique, de
-              l&apos;IA locale et des outils capables d&apos;aider sans rendre leur fonctionnement opaque.
+              Je développe également ma pratique du machine learning et de PyTorch,
+              avec des réseaux denses et convolutifs sur des jeux de données pédagogiques.
+              Je recherche un stage de M2 pour approfondir la modélisation et
+              l&apos;évaluation sur un problème scientifique ou appliqué.
             </p>
           </div>
         </div>
@@ -435,7 +507,7 @@ export default function Home() {
       <section className="contact section-shell" id="contact">
         <div>
           <p className="eyebrow light"><span /> Travaillons ensemble</p>
-          <h2>Un problème intéressant à transformer en produit&nbsp;?</h2>
+          <h2>Un stage en data science, statistiques ou apprentissage&nbsp;?</h2>
         </div>
         <a className="contact-mail" href={`mailto:${email}`}>
           <span>{email}</span><ArrowUpRight />

@@ -1,17 +1,26 @@
 # Portfolio — Amadou Bocoum
 
-Portfolio personnel présentant des projets à l'intersection de la data, de
-l'intelligence artificielle et du développement produit.
+Portfolio d'Amadou Bocoum, étudiant en M2 Data Science et Modélisation Statistique
+à l'Université Bretagne Sud. Positionnement : **data science, statistiques,
+machine learning et deep learning**.
 
-![Aperçu desktop du portfolio](docs/portfolio-desktop.png)
+[Voir le portfolio](https://bocoum1.github.io/portfolio/)
+
+![Aperçu du portfolio : data science, statistiques, ML et DL](docs/portfolio-desktop.png)
 
 Le design est responsive et dispose d'une mise en page dédiée aux écrans mobiles.
 
 ## Projets présentés
 
-- **Atlas** : plateforme de mise en relation étudiante avec matching hybride ;
-- **Local Hybrid RAG** : application locale pour interroger des documents avec citations ;
+- **Estimation récursive à noyau** : dérivée de régression, simulations Monte-Carlo, biais et MSE.
+- **GLM binomiaux** : logit, probit et cloglog, scoring de Fisher vérifié contre `glm`.
+- **MoreMovies** : intégration de trois sources, entrepôt et analyses multidimensionnelles.
 - **UKRA** : tableau de bord BI sur les accidents routiers au Royaume-Uni.
+- **Local Hybrid RAG**, **Atlas** et **Pathfinding Lab** : applications complémentaires.
+
+Les figures statistiques sont générées par les scripts R des dépôts associés,
+et non des maquettes. Les contributions en binôme et les limites sont précisées.
+Les CV et les documents de laboratoire non autorisés ne sont pas publiés.
 
 ## Stack
 

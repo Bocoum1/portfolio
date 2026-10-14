@@ -2,15 +2,15 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Amadou Bocoum | Data & AI Engineer",
+  title: "Amadou Bocoum | Data Science, Statistiques & Machine Learning",
   description:
-    "Portfolio d'Amadou Bocoum : data engineering, analyse statistique, produits IA et applications full-stack.",
+    "Étudiant en M2 Data Science et Modélisation Statistique : estimation, GLM, machine learning et deep learning. Stage à partir de janvier 2027.",
   keywords: [
     "Amadou Bocoum",
-    "Data Engineer",
-    "AI Engineer",
-    "ETL",
-    "Data Warehouse",
+    "Data Science",
+    "Deep Learning",
+    "M2",
+    "GLM",
     "Statistique",
     "Analyse statistique",
     "RAG",
@@ -19,9 +19,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Amadou Bocoum" }],
   openGraph: {
-    title: "Amadou Bocoum | Data & AI Engineer",
+    title: "Amadou Bocoum | Data Science, Statistiques & Machine Learning",
     description:
-      "Des sources aux produits : data engineering, statistique, IA locale et analyse décisionnelle.",
+      "Comprendre les données, évaluer les modèles. Projets statistiques avec code, rapports et simulations reproductibles.",
     type: "website",
     locale: "fr_FR",
   },
