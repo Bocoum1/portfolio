@@ -2,7 +2,7 @@
 
 Portfolio d'Amadou Bocoum, étudiant en M2 Data Science et Modélisation Statistique
 à l'Université Bretagne Sud. Positionnement : **data science, statistiques,
-machine learning et deep learning**.
+machine learning, deep learning et algorithmique**.
 
 [Voir le portfolio](https://bocoum1.github.io/portfolio/)
 
@@ -14,12 +14,18 @@ Le design est responsive et dispose d'une mise en page dédiée aux écrans mobi
 
 - **Estimation récursive à noyau** : dérivée de régression, simulations Monte-Carlo, biais et MSE.
 - **GLM binomiaux** : logit, probit et cloglog, scoring de Fisher vérifié contre `glm`.
-- **MoreMovies** : intégration de trois sources, entrepôt et analyses multidimensionnelles.
-- **UKRA** : tableau de bord BI sur les accidents routiers au Royaume-Uni.
-- **Local Hybrid RAG**, **Atlas** et **Pathfinding Lab** : applications complémentaires.
+- **MNIST** : comparaison linéaire / MLP / CNN, trois graines et analyse des erreurs sur un test interne.
+- **House Prices** : validation croisée, prétraitements par pli et analyse d'une erreur d'extrapolation.
+- **Pathfinding Lab** : cinq stratégies de recherche, coût du chemin et exploration animée ; lien vers le projet initial conservé.
 
-Les figures statistiques sont générées par les scripts R des dépôts associés,
-et non des maquettes. Les contributions en binôme et les limites sont précisées.
+**Local Hybrid RAG**, **UKRA** et **MoreMovies** figurent dans une rubrique
+complémentaire consacrée aux usages des données.
+
+Les figures statistiques et d'apprentissage proviennent des expériences R et
+Python des dépôts associés, et non de maquettes. Les contributions en binôme
+et les limites sont précisées. Les scores de test interne ne sont pas présentés
+comme des résultats de leaderboard ; l'échec de Ridge sur la RMSE en dollars
+est documenté, pas masqué.
 Les CV et les documents de laboratoire non autorisés ne sont pas publiés.
 
 ## Stack

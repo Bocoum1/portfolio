@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Amadou Bocoum | Data Science, Statistiques & Machine Learning",
   description:
-    "Étudiant en M2 Data Science et Modélisation Statistique : estimation, GLM, machine learning et deep learning. Stage à partir de janvier 2027.",
+    "Étudiant en M2 Data Science et Modélisation Statistique : statistiques, machine learning, deep learning et algorithmique. Code, protocoles et résultats. Stage à partir de janvier 2027.",
   keywords: [
     "Amadou Bocoum",
     "Data Science",
@@ -13,15 +13,15 @@ export const metadata: Metadata = {
     "GLM",
     "Statistique",
     "Analyse statistique",
-    "RAG",
-    "Business Intelligence",
+    "Algorithmique",
+    "PyTorch",
     "Machine Learning",
   ],
   authors: [{ name: "Amadou Bocoum" }],
   openGraph: {
     title: "Amadou Bocoum | Data Science, Statistiques & Machine Learning",
     description:
-      "Comprendre les données, évaluer les modèles. Projets statistiques avec code, rapports et simulations reproductibles.",
+      "Statistiques, ML, DL et algorithmique : comparer les méthodes, examiner les erreurs et documenter les limites. Code et résultats consultables.",
     type: "website",
     locale: "fr_FR",
   },

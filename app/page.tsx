@@ -40,17 +40,38 @@ const skillGroups = [
   },
 ];
 
-const statisticalProjects = [
+type ResearchProject = {
+  id: string;
+  category: string;
+  title: string;
+  description: string;
+  image: string;
+  imageWidth: number;
+  imageHeight: number;
+  alt: string;
+  repo: string;
+  evidence: string;
+  note: string;
+  credit?: string;
+  details: { path: string; label: string };
+  tags: string[];
+};
+
+const researchProjects: ResearchProject[] = [
   {
     id: "01",
     category: "Estimation non paramétrique",
     title: "Apprendre une variation locale.",
     description: "Estimer la dérivée d'une fonction de régression bruitée avec trois estimateurs récursifs à noyau. Comparer les erreurs plutôt que seulement regarder les courbes.",
     image: "kernel-derivative.png",
+    imageWidth: 1440,
+    imageHeight: 900,
     alt: "Dérivée analytique et estimations à noyau sur un même échantillon simulé",
     repo: "recursive-kernel-estimation",
     evidence: "3 noyaux · 200 répétitions Monte-Carlo · biais et MSE",
     note: "Simulation à vérité connue. Fonctions originales vérifiées et expérience complémentaire reproductible.",
+    credit: "Travail en binôme avec Anya Levêque.",
+    details: { path: "recursive-kernel-estimation/tree/main/reports", label: "Rapports" },
     tags: ["R", "Noyaux", "Biais / variance", "Simulation"],
   },
   {
@@ -59,11 +80,66 @@ const statisticalProjects = [
     title: "Comparer trois liens binomiaux.",
     description: "Passer de la vraisemblance à une implémentation du scoring de Fisher, puis comparer logit, probit et cloglog sur une étude dose-réponse.",
     image: "glm-dose-response.png",
+    imageWidth: 1440,
+    imageHeight: 900,
     alt: "Proportions observées et courbes logit, probit et complémentaire log-log ajustées",
     repo: "binomia-glm",
     evidence: "3 liens · calcul manuel · contrôle avec stats::glm",
     note: "Comparaison d'ajustement sur huit groupes, sans revendication de performance sur des données de test.",
+    credit: "Travail en binôme avec Anya Levêque.",
+    details: { path: "binomia-glm/tree/main/reports", label: "Rapports" },
     tags: ["R", "GLM", "Vraisemblance", "Diagnostics"],
+  },
+  {
+    id: "03",
+    category: "Deep learning · Classification d'images",
+    title: "MNIST : du linéaire au CNN.",
+    description: "Comparer un classifieur linéaire, un MLP et un CNN sur les mêmes images. Examiner les courbes d'apprentissage, les erreurs et le coût des architectures.",
+    image: "mnist-learning-curves.png",
+    imageWidth: 1650,
+    imageHeight: 600,
+    alt: "Pertes d'entraînement et de validation du modèle linéaire, du MLP et du CNN sur huit époques",
+    repo: "Mnist",
+    evidence: "3 architectures · 3 graines · CNN : 98,32 % sur le test interne",
+    note: "Moyenne sur trois entraînements et un découpage fixe de Kaggle Digit Recognizer. Pas une validation externe ni un score de leaderboard.",
+    details: { path: "Mnist/blob/main/docs/protocol.md", label: "Protocole et limites" },
+    tags: ["PyTorch", "CNN", "Validation", "Analyse des erreurs"],
+  },
+  {
+    id: "04",
+    category: "Machine learning · Régression tabulaire",
+    title: "House Prices : au-delà du score.",
+    description: "Comparer une référence constante, Ridge, une forêt et le gradient boosting. Apprendre les prétraitements dans chaque pli, puis analyser les erreurs du modèle retenu.",
+    image: "house-prices-comparison.png",
+    imageWidth: 1200,
+    imageHeight: 600,
+    alt: "Comparaison de la RMSE logarithmique en validation croisée pour quatre modèles de prix immobiliers",
+    repo: "Kaggle/tree/main/house_prices",
+    evidence: "5 plis · test séparé · sélection de Ridge sur la RMSE log",
+    note: "Ridge réduit la MAE, mais une erreur d'extrapolation dégrade la RMSE en dollars et donne un R² négatif. Ce résultat est analysé, pas masqué.",
+    details: { path: "Kaggle/blob/main/house_prices/RESULTS.md", label: "Résultats et discussion" },
+    tags: ["scikit-learn", "Pipelines", "Validation croisée", "Résidus"],
+  },
+];
+
+const appliedProjects = [
+  {
+    title: "Local Hybrid RAG",
+    description: "Recherche documentaire hybride, génération locale et citations consultables.",
+    repo: "Retrieval-Augmented-Generation",
+    tools: "Python · FAISS · BM25 · Ollama",
+  },
+  {
+    title: "UKRA",
+    description: "Analyse spatiale et temporelle des accidents routiers dans un tableau de bord interactif.",
+    repo: "UKRA",
+    tools: "R · Shiny · Plotly · Leaflet",
+  },
+  {
+    title: "MoreMovies",
+    description: "Intégration de trois sources et analyses multidimensionnelles des ventes et locations.",
+    repo: "moremovies",
+    tools: "SQL · Pentaho PDI · Mondrian",
   },
 ];
 
@@ -93,8 +169,9 @@ export default function Home() {
           <p className="hero-intro">
             Je suis <strong>Amadou Bocoum</strong>, étudiant en M2 Data Science et
             Modélisation Statistique à l&apos;Université Bretagne Sud. Je m&apos;intéresse
-            à l&apos;inférence statistique, au machine learning et au deep learning :
-            comprendre les méthodes, les mettre en œuvre et examiner leurs résultats.
+            à l&apos;inférence statistique, au machine learning et au deep learning,
+            avec un intérêt pour les fondements algorithmiques : comprendre les méthodes,
+            les mettre en œuvre et examiner leurs résultats.
           </p>
           <p className="availability">Stage de fin d&apos;études · Janvier 2027 · 4 à 6 mois</p>
           <div className="hero-actions">
@@ -160,36 +237,36 @@ export default function Home() {
             <h2>Des hypothèses.<br />Des résultats vérifiables.</h2>
           </div>
           <p>
-            D&apos;abord mes travaux statistiques : code, rapports et simulations.
-            Puis des applications qui montrent comment je prépare les données
-            et rends les analyses accessibles.
+            Statistiques, machine learning, deep learning et algorithmique :
+            des questions précises, du code, des expériences et une lecture critique
+            des résultats. Les applications viennent en complément.
           </p>
         </div>
 
         <div className="research-grid">
-          {statisticalProjects.map((project) => (
+          {researchProjects.map((project) => (
             <article className="research-card" key={project.repo}>
               <div className="research-body">
                 <p className="research-category">{project.id} / {project.category}</p>
                 <h3>{project.title}</h3>
                 <p>{project.description}</p>
               </div>
-              <a href={`${githubUrl}/${project.repo}`} target="_blank" rel="noreferrer"
+              <a className="research-figure" href={`${githubUrl}/${project.repo}`} target="_blank" rel="noreferrer"
                  aria-label={`Consulter le projet : ${project.category}`}>
                 <Image src={`${basePath}/projects/${project.image}`} alt={project.alt}
-                       width={1440} height={900} unoptimized />
+                       width={project.imageWidth} height={project.imageHeight} unoptimized />
               </a>
               <div className="research-body research-evidence">
                 <strong>{project.evidence}</strong>
                 <p>{project.note}</p>
-                <p className="research-credit">Travail en binôme avec Anya Levêque.</p>
+                {project.credit && <p className="research-credit">{project.credit}</p>}
                 <div className="tags">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
                 <div className="project-links">
                   <a href={`${githubUrl}/${project.repo}`} target="_blank" rel="noreferrer">
                     Code et résultats <ArrowUpRight />
                   </a>
-                  <a href={`${githubUrl}/${project.repo}/tree/main/reports`} target="_blank" rel="noreferrer">
-                    Rapports <ArrowUpRight />
+                  <a href={`${githubUrl}/${project.details.path}`} target="_blank" rel="noreferrer">
+                    {project.details.label} <ArrowUpRight />
                   </a>
                 </div>
               </div>
@@ -199,219 +276,17 @@ export default function Home() {
 
         <div className="section-heading complementary-heading">
           <div>
-            <p className="eyebrow"><span /> Compétences complémentaires</p>
-            <h2>De l&apos;analyse<br />à l&apos;application.</h2>
+            <p className="eyebrow"><span /> Algorithmique</p>
+            <h2>Un chemin court.<br />Mais à quel coût ?</h2>
           </div>
-          <p>Business intelligence, recherche documentaire et développement :
-            des outils pour préparer les données et rendre les résultats accessibles.</p>
+          <p>Comparer les stratégies de recherche, comprendre le rôle des heuristiques
+            et observer les compromis entre coût du chemin et exploration.</p>
         </div>
-
-        <article className="project project-moremovies">
-          <div className="project-copy">
-            <div className="project-meta">
-              <span>03</span>
-              <span>Data engineering · Business Intelligence</span>
-            </div>
-            <h3>MoreMovies</h3>
-            <p className="project-lead">
-              Réconcilier trois systèmes incompatibles pour créer une vision métier commune.
-            </p>
-            <p>
-              Une chaîne décisionnelle complète qui harmonise les données de trois enseignes,
-              construit un entrepôt ROLAP et expose des analyses multidimensionnelles sur les
-              ventes, les locations, les produits et les profils clients.
-            </p>
-            <ul className="project-points">
-              <li>40 transformations Pentaho PDI et 37 tables SQL</li>
-              <li>4 dimensions, 2 tables de faits et 3 agrégats mensuels</li>
-              <li>3 cubes Mondrian, 5 requêtes MDX et exports Power BI</li>
-            </ul>
-            <div className="project-links">
-              <a href="https://github.com/Bocoum1/moremovies" target="_blank" rel="noreferrer">
-                Explorer le projet <ArrowUpRight />
-              </a>
-              <a href="https://github.com/Bocoum1/moremovies#architecture" target="_blank" rel="noreferrer">
-                Voir l&apos;architecture <GithubMark />
-              </a>
-            </div>
-            <div className="tags">
-              <span>MySQL</span><span>Pentaho PDI</span><span>Mondrian</span><span>MDX</span><span>Power BI</span>
-            </div>
-          </div>
-          <a
-            className="project-visual screenshot-visual moremovies-screenshot"
-            href="https://github.com/Bocoum1/moremovies"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Explorer le dépôt MoreMovies"
-          >
-            <div className="screenshot-window">
-              <div className="screenshot-bar"><i /><i /><i /><span>MoreMovies · architecture décisionnelle</span></div>
-              <Image
-                src={`${basePath}/projects/moremovies.svg`}
-                alt="Architecture de la plateforme décisionnelle MoreMovies"
-                width="1400"
-                height="650"
-                unoptimized
-              />
-            </div>
-            <span className="screenshot-caption">Architecture et code source <ArrowUpRight /></span>
-          </a>
-        </article>
-
-        <article className="project project-atlas">
-          <div className="project-copy">
-            <div className="project-meta">
-              <span>04</span>
-              <span>Produit full-stack · Démonstration en ligne</span>
-            </div>
-            <h3>Atlas</h3>
-            <p className="project-lead">
-              Rendre les bonnes rencontres plus faciles pour les étudiants.
-            </p>
-            <p>
-              Une plateforme de mise en relation qui combine profils, recherche,
-              matching vectoriel et graphe relationnel pour faire émerger des connexions
-              pertinentes autour de l&apos;orientation, de l&apos;intégration et des opportunités.
-            </p>
-            <ul className="project-points">
-              <li>Architecture Next.js, FastAPI, PostgreSQL et Qdrant</li>
-              <li>Matching hybride et recherche sémantique</li>
-              <li>Authentification Firebase et socle de production documenté</li>
-            </ul>
-            <div className="project-links">
-              <a href="https://atlas-sigma-gold.vercel.app/" target="_blank" rel="noreferrer">
-                Ouvrir l&apos;application <ArrowUpRight />
-              </a>
-            </div>
-            <div className="tags">
-              <span>Next.js</span><span>FastAPI</span><span>PostgreSQL</span><span>Qdrant</span>
-            </div>
-          </div>
-          <a
-            className="project-visual screenshot-visual atlas-screenshot"
-            href="https://atlas-sigma-gold.vercel.app/"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Ouvrir la démonstration Atlas"
-          >
-            <div className="screenshot-window">
-              <div className="screenshot-bar"><i /><i /><i /><span>atlas-sigma-gold.vercel.app</span></div>
-              <Image
-                src={`${basePath}/projects/atlas.webp`}
-                alt="Page d'accueil et création de compte de l'application Atlas"
-                width="1280"
-                height="800"
-                unoptimized
-              />
-            </div>
-            <span className="screenshot-caption">Application en ligne <ArrowUpRight /></span>
-          </a>
-        </article>
-
-        <article className="project project-rag">
-          <div className="project-copy">
-            <div className="project-meta">
-              <span>05</span>
-              <span>IA locale · Open source</span>
-            </div>
-            <h3>Local Hybrid RAG</h3>
-            <p className="project-lead">
-              Interroger ses documents sans les envoyer à une grande plateforme.
-            </p>
-            <p>
-              Une application RAG locale et transparente pour les PDF, DOCX et TXT.
-              La recherche hybride, le reranking et les citations rendent chaque réponse
-              plus vérifiable, tandis qu&apos;Ollama conserve la génération sur la machine.
-            </p>
-            <ul className="project-points">
-              <li>Recherche FAISS + BM25 fusionnée par Reciprocal Rank Fusion</li>
-              <li>Sources, pages et passages consultables</li>
-              <li>Suite de tests et CI GitHub</li>
-            </ul>
-            <div className="project-links">
-              <a href="https://github.com/Bocoum1/Retrieval-Augmented-Generation" target="_blank" rel="noreferrer">
-                Voir le code <ArrowUpRight />
-              </a>
-            </div>
-            <div className="tags">
-              <span>Python</span><span>Streamlit</span><span>FAISS</span><span>Ollama</span>
-            </div>
-          </div>
-          <div className="project-visual rag-visual" aria-hidden="true">
-            <div className="rag-window">
-              <div className="rag-window-head"><span /><strong>Local RAG</strong><small>● Local</small></div>
-              <div className="rag-question">Quels sont les risques identifiés dans ce document ?</div>
-              <div className="rag-answer">
-                <span className="answer-line long" /><span className="answer-line" />
-                <span className="answer-line medium" />
-                <div className="citation">[1] rapport.pdf · page 12</div>
-                <div className="citation">[2] annexe.docx · section 4</div>
-              </div>
-              <div className="rag-pipeline">
-                <span>BM25</span><i>+</i><span>FAISS</span><i>→</i><span>Rerank</span><i>→</i><span>Ollama</span>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article className="project project-ukra">
-          <div className="project-copy">
-            <div className="project-meta">
-              <span>06</span>
-              <span>Business Intelligence · Projet en binôme</span>
-            </div>
-            <h3>UKRA</h3>
-            <p className="project-lead">
-              Comprendre où, quand et dans quelles conditions les accidents surviennent.
-            </p>
-            <p>
-              Un tableau de bord décisionnel construit sur 307 973 accidents routiers au
-              Royaume-Uni. Les vues territoriales, temporelles et factorielles relient les
-              indicateurs aux questions des acteurs de la sécurité routière.
-            </p>
-            <ul className="project-points">
-              <li>Filtres transversaux et KPI réactifs</li>
-              <li>Cartographie des districts et facteurs de risque</li>
-              <li>Application R Shiny déployée publiquement</li>
-            </ul>
-            <div className="project-links">
-              <a href="https://datascienceappli.shinyapps.io/Securite_routiere/" target="_blank" rel="noreferrer">
-                Ouvrir l&apos;application <ArrowUpRight />
-              </a>
-              <a href="https://github.com/Bocoum1/UKRA" target="_blank" rel="noreferrer">
-                Code source <GithubMark />
-              </a>
-            </div>
-            <div className="tags">
-              <span>R</span><span>Shiny</span><span>Plotly</span><span>Leaflet</span>
-            </div>
-          </div>
-          <a
-            className="project-visual screenshot-visual ukra-screenshot"
-            href="https://datascienceappli.shinyapps.io/Securite_routiere/"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Ouvrir le tableau de bord UKRA"
-          >
-            <div className="screenshot-window">
-              <div className="screenshot-bar"><i /><i /><i /><span>UKRA · R Shiny</span></div>
-              <Image
-                src={`${basePath}/projects/ukra.webp`}
-                alt="Vue globale du tableau de bord R Shiny UKRA"
-                width="1440"
-                height="760"
-                unoptimized
-              />
-            </div>
-            <span className="screenshot-caption">Dashboard interactif <ArrowUpRight /></span>
-          </a>
-        </article>
 
         <article className="project project-pathfinding">
           <div className="project-copy">
             <div className="project-meta">
-              <span>07</span>
+              <span>05</span>
               <span>Algorithmique · Laboratoire Julia</span>
             </div>
             <h3>Pathfinding Lab</h3>
@@ -434,6 +309,9 @@ export default function Home() {
               </a>
               <a href="https://github.com/Bocoum1/Pathfinding-Lab" target="_blank" rel="noreferrer">
                 Code source <GithubMark />
+              </a>
+              <a href="https://github.com/Bocoum1/Pathfinding" target="_blank" rel="noreferrer">
+                Projet initial <ArrowUpRight />
               </a>
             </div>
             <div className="tags">
@@ -460,6 +338,25 @@ export default function Home() {
             <span className="screenshot-caption">Démonstration interactive <ArrowUpRight /></span>
           </a>
         </article>
+      </section>
+
+      <section className="applied section-shell" aria-labelledby="applied-title">
+        <p className="eyebrow"><span /> En complément</p>
+        <h2 id="applied-title">Des méthodes aux usages.</h2>
+        <p className="applied-intro">Trois applications pour préparer, explorer et restituer les données.</p>
+        <div className="applied-grid">
+          {appliedProjects.map((project) => (
+            <article className="applied-card" key={project.repo}>
+              <h3>{project.title}</h3>
+              <p>{project.description}</p>
+              <small>{project.tools}</small>
+              <a href={`${githubUrl}/${project.repo}`} target="_blank" rel="noreferrer"
+                 aria-label={`Consulter le projet ${project.title}`}>
+                Voir le projet <ArrowUpRight />
+              </a>
+            </article>
+          ))}
+        </div>
       </section>
 
       <section className="approach section-shell" id="approche">
@@ -496,7 +393,9 @@ export default function Home() {
             </p>
             <p>
               Je développe également ma pratique du machine learning et de PyTorch,
-              avec des réseaux denses et convolutifs sur des jeux de données pédagogiques.
+              avec des comparaisons de modèles tabulaires, de réseaux denses et convolutifs.
+              L&apos;algorithmique complète cette démarche : comprendre les étapes d&apos;un
+              calcul, ses garanties et ses compromis.
               Je recherche un stage de M2 pour approfondir la modélisation et
               l&apos;évaluation sur un problème scientifique ou appliqué.
             </p>
