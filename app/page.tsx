@@ -102,7 +102,7 @@ const researchProjects: ResearchProject[] = [
     repo: "Mnist",
     evidence: "3 architectures · 3 graines · CNN : 98,32 % sur le test interne",
     note: "Moyenne sur trois entraînements et un découpage fixe de Kaggle Digit Recognizer. Pas une validation externe ni un score de leaderboard.",
-    details: { path: "Mnist/blob/main/docs/protocol.md", label: "Protocole et limites" },
+    details: { path: "Mnist/blob/main/results/test-metrics.csv", label: "Résultats détaillés" },
     tags: ["PyTorch", "CNN", "Validation", "Analyse des erreurs"],
   },
   {
