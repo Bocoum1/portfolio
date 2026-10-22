@@ -53,7 +53,7 @@ type ResearchProject = {
   evidence: string;
   note: string;
   credit?: string;
-  details: { path: string; label: string };
+  details?: { path: string; label: string };
   tags: string[];
 };
 
@@ -102,7 +102,6 @@ const researchProjects: ResearchProject[] = [
     repo: "Mnist",
     evidence: "3 architectures · 3 graines · CNN : 98,32 % sur le test interne",
     note: "Moyenne sur trois entraînements et un découpage fixe de Kaggle Digit Recognizer. Pas une validation externe ni un score de leaderboard.",
-    details: { path: "Mnist/blob/main/results/test-metrics.csv", label: "Résultats détaillés" },
     tags: ["PyTorch", "CNN", "Validation", "Analyse des erreurs"],
   },
   {
@@ -265,9 +264,11 @@ export default function Home() {
                   <a href={`${githubUrl}/${project.repo}`} target="_blank" rel="noreferrer">
                     Code et résultats <ArrowUpRight />
                   </a>
-                  <a href={`${githubUrl}/${project.details.path}`} target="_blank" rel="noreferrer">
-                    {project.details.label} <ArrowUpRight />
-                  </a>
+                  {project.details && (
+                    <a href={`${githubUrl}/${project.details.path}`} target="_blank" rel="noreferrer">
+                      {project.details.label} <ArrowUpRight />
+                    </a>
+                  )}
                 </div>
               </div>
             </article>
