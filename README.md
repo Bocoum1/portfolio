@@ -16,7 +16,7 @@ Le design est responsive et dispose d'une mise en page dédiée aux écrans mobi
 - **GLM binomiaux** : logit, probit et cloglog, scoring de Fisher vérifié contre `glm`.
 - **MNIST** : comparaison linéaire / MLP / CNN, trois graines et analyse des erreurs sur un test interne.
 - **House Prices** : validation croisée, prétraitements par pli et analyse d'une erreur d'extrapolation.
-- **Pathfinding Lab** : cinq stratégies de recherche, coût du chemin et exploration animée ; lien vers le projet initial conservé.
+- **Pathfinding** : projet initial en Julia, BFS, Dijkstra, A* et recherche gloutonne sur des grilles.
 
 **Local Hybrid RAG**, **UKRA** et **MoreMovies** figurent dans une rubrique
 complémentaire consacrée aux usages des données.

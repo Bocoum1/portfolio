@@ -288,55 +288,57 @@ export default function Home() {
           <div className="project-copy">
             <div className="project-meta">
               <span>05</span>
-              <span>Algorithmique · Laboratoire Julia</span>
+              <span>Algorithmique · Projet Julia</span>
             </div>
-            <h3>Pathfinding Lab</h3>
+            <h3>Pathfinding</h3>
             <p className="project-lead">
-              Voir un algorithme réfléchir, étape par étape.
+              Comprendre comment un algorithme trouve son chemin.
             </p>
             <p>
-              Un laboratoire pédagogique qui compare cinq stratégies de recherche sur des
-              cartes pondérées. Julia calcule les traces réelles, puis l&apos;interface anime
-              l&apos;exploration et la reconstruction du chemin.
+              Mon projet initial de recherche de chemin en Julia : quatre algorithmes
+              parcourent des grilles lues depuis des fichiers texte, prennent en compte
+              les obstacles et reconstruisent un chemin entre deux positions.
             </p>
             <ul className="project-points">
-              <li>BFS, Dijkstra, A*, glouton et A* pondéré</li>
-              <li>Coût, étapes, états explorés et terrains pondérés</li>
-              <li>Tests automatisés et déploiement GitHub Pages</li>
+              <li>BFS, Dijkstra, A* et recherche gloutonne</li>
+              <li>Files de priorité, coûts de déplacement et heuristique de Manhattan</li>
+              <li>Reconstruction du chemin et comptage des états explorés</li>
             </ul>
             <div className="project-links">
-              <a href="https://bocoum1.github.io/Pathfinding-Lab/" target="_blank" rel="noreferrer">
-                Lancer la démonstration <ArrowUpRight />
-              </a>
-              <a href="https://github.com/Bocoum1/Pathfinding-Lab" target="_blank" rel="noreferrer">
-                Code source <GithubMark />
-              </a>
               <a href="https://github.com/Bocoum1/Pathfinding" target="_blank" rel="noreferrer">
-                Projet initial <ArrowUpRight />
+                Explorer le projet <ArrowUpRight />
+              </a>
+              <a href="https://github.com/Bocoum1/Pathfinding/blob/main/src/Path.jl" target="_blank" rel="noreferrer">
+                Code source <GithubMark />
               </a>
             </div>
             <div className="tags">
-              <span>Julia</span><span>Algorithmes</span><span>A*</span><span>GitHub Actions</span>
+              <span>Julia</span><span>Algorithmes</span><span>A*</span><span>Heuristiques</span>
             </div>
           </div>
           <a
             className="project-visual screenshot-visual pathfinding-screenshot"
-            href="https://bocoum1.github.io/Pathfinding-Lab/"
+            href="https://github.com/Bocoum1/Pathfinding"
             target="_blank"
             rel="noreferrer"
-            aria-label="Lancer la démonstration Pathfinding Lab"
+            aria-label="Consulter le projet Pathfinding initial"
           >
             <div className="screenshot-window">
-              <div className="screenshot-bar"><i /><i /><i /><span>A* · exploration 15 / 43</span></div>
-              <Image
-                src={`${basePath}/projects/pathfinding-lab.webp`}
-                alt="Animation de l'exploration A* dans Pathfinding Lab"
-                width="1440"
-                height="676"
-                unoptimized
-              />
+              <div className="screenshot-bar"><i /><i /><i /><span>Pathfinding · Julia</span></div>
+              <pre style={{ margin: 0, padding: "32px", whiteSpace: "pre-wrap", overflowWrap: "anywhere", fontSize: "14px", lineHeight: 1.8 }}>
+                <code>{`include("src/Path.jl")
+
+carte = "dat/maze512-1-0.map"
+depart = (333, 14)
+arrivee = (312, 15)
+
+algobfs(carte, depart, arrivee)
+algoDijkstra(carte, depart, arrivee)
+algoAstar(carte, depart, arrivee)
+algoGlouton(carte, depart, arrivee)`}</code>
+              </pre>
             </div>
-            <span className="screenshot-caption">Démonstration interactive <ArrowUpRight /></span>
+            <span className="screenshot-caption">Exemple d&apos;utilisation · voir le dépôt <ArrowUpRight /></span>
           </a>
         </article>
       </section>
