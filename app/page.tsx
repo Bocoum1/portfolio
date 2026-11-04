@@ -135,10 +135,10 @@ const appliedProjects = [
     tools: "R · Shiny · Plotly · Leaflet",
   },
   {
-    title: "MoreMovies",
-    description: "Intégration de trois sources et analyses multidimensionnelles des ventes et locations.",
-    repo: "moremovies",
-    tools: "SQL · Pentaho PDI · Mondrian",
+    title: "Pathfinding",
+    description: "Comparaison de BFS, Dijkstra, A* et de la recherche gloutonne sur des grilles avec obstacles.",
+    repo: "Pathfinding",
+    tools: "Julia · Algorithmes · Heuristiques",
   },
 ];
 
@@ -239,7 +239,7 @@ export default function Home() {
             <h2>Des hypothèses.<br />Des résultats vérifiables.</h2>
           </div>
           <p>
-            Statistiques, machine learning, deep learning et algorithmique :
+            Statistiques, machine learning, deep learning et ingénierie des données :
             des questions précises, du code, des expériences et une lecture critique
             des résultats. Les applications viennent en complément.
           </p>
@@ -280,68 +280,64 @@ export default function Home() {
 
         <div className="section-heading complementary-heading">
           <div>
-            <p className="eyebrow"><span /> Algorithmique</p>
-            <h2>Un chemin court.<br />Mais à quel coût ?</h2>
+            <p className="eyebrow"><span /> Ingénierie des données · BI</p>
+            <h2>Trois sources.<br />Une vision commune.</h2>
           </div>
-          <p>Comparer les stratégies de recherche, comprendre le rôle des heuristiques
-            et observer les compromis entre coût du chemin et exploration.</p>
+          <p>Relier des données hétérogènes, contrôler leur cohérence et construire
+            un entrepôt pour analyser les ventes et les locations.</p>
         </div>
 
-        <article className="project project-pathfinding">
+        <article className="project project-moremovies" id="moremovies">
           <div className="project-copy">
             <div className="project-meta">
               <span>05</span>
-              <span>Algorithmique · Projet Julia</span>
+              <span>Data engineering · Projet universitaire en équipe</span>
             </div>
-            <h3>Pathfinding</h3>
+            <h3>MoreMovies</h3>
             <p className="project-lead">
-              Comprendre comment un algorithme trouve son chemin.
+              Des données sources à l&apos;analyse décisionnelle.
             </p>
             <p>
-              Mon projet initial de recherche de chemin en Julia : quatre algorithmes
-              parcourent des grilles lues depuis des fichiers texte, prennent en compte
-              les obstacles et reconstruisent un chemin entre deux positions.
+              Trois enseignes décrivent leurs clients, produits et transactions
+              différemment. Ce projet consolide leurs données dans un modèle commun,
+              puis alimente un entrepôt MySQL pour explorer l&apos;activité par magasin,
+              produit et période.
             </p>
             <ul className="project-points">
-              <li>BFS, Dijkstra, A* et recherche gloutonne</li>
-              <li>Files de priorité, coûts de déplacement et heuristique de Manhattan</li>
-              <li>Reconstruction du chemin et comptage des états explorés</li>
+              <li>Nettoyage et harmonisation des identifiants avec Pentaho PDI</li>
+              <li>Entrepôt ROLAP : 4 dimensions, 2 tables de faits et 3 agrégats</li>
+              <li>Cubes Mondrian, requêtes MDX et préparation du reporting</li>
             </ul>
             <div className="project-links">
-              <a href="https://github.com/Bocoum1/Pathfinding" target="_blank" rel="noreferrer">
+              <a href="https://github.com/Bocoum1/moremovies" target="_blank" rel="noreferrer">
                 Explorer le projet <ArrowUpRight />
               </a>
-              <a href="https://github.com/Bocoum1/Pathfinding/blob/main/src/Path.jl" target="_blank" rel="noreferrer">
-                Code source <GithubMark />
+              <a href="https://github.com/Bocoum1/moremovies/blob/main/docs/architecture.md" target="_blank" rel="noreferrer">
+                Architecture et choix techniques <GithubMark />
               </a>
             </div>
             <div className="tags">
-              <span>Julia</span><span>Algorithmes</span><span>A*</span><span>Heuristiques</span>
+              <span>MySQL</span><span>Pentaho PDI</span><span>ETL</span><span>Mondrian / MDX</span>
             </div>
           </div>
           <a
-            className="project-visual screenshot-visual pathfinding-screenshot"
-            href="https://github.com/Bocoum1/Pathfinding"
+            className="project-visual screenshot-visual moremovies-screenshot"
+            href="https://github.com/Bocoum1/moremovies/blob/main/docs/architecture.svg"
             target="_blank"
             rel="noreferrer"
-            aria-label="Consulter le projet Pathfinding initial"
+            aria-label="Voir le schéma d'architecture de MoreMovies en grand"
           >
             <div className="screenshot-window">
-              <div className="screenshot-bar"><i /><i /><i /><span>Pathfinding · Julia</span></div>
-              <pre style={{ margin: 0, padding: "32px", whiteSpace: "pre-wrap", overflowWrap: "anywhere", fontSize: "14px", lineHeight: 1.8 }}>
-                <code>{`include("src/Path.jl")
-
-carte = "dat/maze512-1-0.map"
-depart = (333, 14)
-arrivee = (312, 15)
-
-algobfs(carte, depart, arrivee)
-algoDijkstra(carte, depart, arrivee)
-algoAstar(carte, depart, arrivee)
-algoGlouton(carte, depart, arrivee)`}</code>
-              </pre>
+              <div className="screenshot-bar"><i /><i /><i /><span>MoreMovies · Architecture</span></div>
+              <Image
+                src={`${basePath}/projects/moremovies.svg`}
+                alt="Architecture MoreMovies : trois sources, flux ETL Pentaho, base intégrée, entrepôt MySQL et analyses Mondrian."
+                width={1400}
+                height={650}
+                unoptimized
+              />
             </div>
-            <span className="screenshot-caption">Exemple d&apos;utilisation · voir le dépôt <ArrowUpRight /></span>
+            <span className="screenshot-caption">De la source à l&apos;analyse · agrandir le schéma <ArrowUpRight /></span>
           </a>
         </article>
       </section>
@@ -349,7 +345,7 @@ algoGlouton(carte, depart, arrivee)`}</code>
       <section className="applied section-shell" aria-labelledby="applied-title">
         <p className="eyebrow"><span /> En complément</p>
         <h2 id="applied-title">Des méthodes aux usages.</h2>
-        <p className="applied-intro">Trois applications pour préparer, explorer et restituer les données.</p>
+        <p className="applied-intro">Trois projets complémentaires : recherche documentaire, visualisation et algorithmique.</p>
         <div className="applied-grid">
           {appliedProjects.map((project) => (
             <article className="applied-card" key={project.repo}>
