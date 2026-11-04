@@ -413,7 +413,7 @@ algoGlouton(carte, depart, arrivee)`}</code>
       <section className="contact section-shell" id="contact">
         <div>
           <p className="eyebrow light"><span /> Travaillons ensemble</p>
-          <h2>Un stage en data science, statistiques ou apprentissage&nbsp;?</h2>
+          <h2>Un stage dans la data&nbsp;?</h2>
         </div>
         <a className="contact-mail" href={`mailto:${email}`}>
           <span>{email}</span><ArrowUpRight />
