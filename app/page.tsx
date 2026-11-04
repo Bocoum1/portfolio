@@ -175,7 +175,6 @@ export default function Home() {
             concevoir des bases, construire des pipelines ETL et contrôler la qualité
             des données avant leur analyse.
           </p>
-          <p className="availability">Stage de fin d&apos;études · Janvier 2027 · 4 à 6 mois</p>
           <div className="hero-actions">
             <a className="button button-primary" href="#projets">
               Découvrir mes projets <span aria-hidden="true">↓</span>
