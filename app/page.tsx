@@ -171,6 +171,9 @@ export default function Home() {
             à l&apos;inférence statistique, au machine learning et au deep learning,
             avec un intérêt pour les fondements algorithmiques : comprendre les méthodes,
             les mettre en œuvre et examiner leurs résultats.
+            {" "}Je m&apos;intéresse également à la chaîne de traitement des données :
+            concevoir des bases, construire des pipelines ETL et contrôler la qualité
+            des données avant leur analyse.
           </p>
           <p className="availability">Stage de fin d&apos;études · Janvier 2027 · 4 à 6 mois</p>
           <div className="hero-actions">
