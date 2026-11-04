@@ -399,8 +399,9 @@ algoGlouton(carte, depart, arrivee)`}</code>
               avec des comparaisons de modèles tabulaires, de réseaux denses et convolutifs.
               L&apos;algorithmique complète cette démarche : comprendre les étapes d&apos;un
               calcul, ses garanties et ses compromis.
-              Je recherche un stage de M2 pour approfondir la modélisation et
-              l&apos;évaluation sur un problème scientifique ou appliqué.
+              Je recherche un stage de M2 pour approfondir la préparation et la
+              structuration des données, ainsi que la modélisation et l&apos;évaluation,
+              sur un problème scientifique ou appliqué.
             </p>
           </div>
         </div>
