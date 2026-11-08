@@ -123,12 +123,6 @@ const researchProjects: ResearchProject[] = [
 
 const appliedProjects = [
   {
-    title: "Local Hybrid RAG",
-    description: "Recherche documentaire hybride, génération locale et citations consultables.",
-    repo: "Retrieval-Augmented-Generation",
-    tools: "Python · FAISS · BM25 · Ollama",
-  },
-  {
     title: "UKRA",
     description: "Analyse spatiale et temporelle des accidents routiers dans un tableau de bord interactif.",
     repo: "UKRA",
@@ -141,6 +135,56 @@ const appliedProjects = [
     tools: "Julia · Algorithmes · Heuristiques",
   },
 ];
+
+const projectDemos = [
+  {
+    id: "demo-moremovies",
+    title: "MoreMovies",
+    duration: "1 min 23",
+    file: "moremovies",
+    description: "Des trois sources à l'entrepôt : suivre le nettoyage, l'intégration et l'analyse des données.",
+    note: "Restitution pédagogique complémentaire, créée à partir des données du projet. Ce n'est pas une capture de Power BI ou de Spoon.",
+    repo: "moremovies",
+  },
+  {
+    id: "demo-rag",
+    title: "Local Hybrid RAG",
+    duration: "45 s",
+    file: "rag",
+    description: "Poser des questions à ses documents, retrouver les passages utiles et consulter les sources des réponses.",
+    note: "Capture de l'application avec Mistral. Temps d'attente raccourcis au montage ; exemple sélectionné, pas un benchmark.",
+    repo: "Retrieval-Augmented-Generation",
+  },
+];
+
+function ProjectVideo({ demo }: { demo: (typeof projectDemos)[number] }) {
+  return (
+    <div className="project-video">
+      <figure className="demo-card" id={demo.id}>
+        <div className="demo-heading">
+          <strong id={`${demo.id}-title`}>Démonstration · {demo.title}</strong>
+          <span>{demo.duration} · Sans son</span>
+        </div>
+        {/* Le lecteur charge la vidéo à la demande ; WebM sert de repli au MP4. */}
+        <video controls playsInline preload="none" width={1080} height={1350}
+          poster={`${basePath}/videos/${demo.file}-poster.png`}
+          aria-labelledby={`${demo.id}-title`} aria-describedby={`${demo.id}-description`}>
+          <source src={`${basePath}/videos/${demo.file}.mp4`} type="video/mp4" />
+          <source src={`${basePath}/videos/${demo.file}.webm`} type="video/webm" />
+          Votre navigateur ne prend pas en charge la lecture vidéo.
+        </video>
+        <figcaption>
+          <p className="demo-note" id={`${demo.id}-description`}>{demo.note}</p>
+          <div className="project-links">
+            <a href={`${basePath}/videos/${demo.file}.mp4`} target="_blank" rel="noreferrer">
+              Ouvrir la vidéo <ArrowUpRight />
+            </a>
+          </div>
+        </figcaption>
+      </figure>
+    </div>
+  );
+}
 
 export default function Home() {
   return (
@@ -286,7 +330,7 @@ export default function Home() {
             un entrepôt pour analyser les ventes et les locations.</p>
         </div>
 
-        <article className="project project-moremovies" id="moremovies">
+        <article className="project project-moremovies project-with-video" id="moremovies">
           <div className="project-copy">
             <div className="project-meta">
               <span>05</span>
@@ -319,32 +363,47 @@ export default function Home() {
               <span>MySQL</span><span>Pentaho PDI</span><span>ETL</span><span>Mondrian / MDX</span>
             </div>
           </div>
-          <a
-            className="project-visual screenshot-visual moremovies-screenshot"
-            href="https://github.com/Bocoum1/moremovies/blob/main/docs/architecture.svg"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Voir le schéma d'architecture de MoreMovies en grand"
-          >
-            <div className="screenshot-window">
-              <div className="screenshot-bar"><i /><i /><i /><span>MoreMovies · Architecture</span></div>
-              <Image
-                src={`${basePath}/projects/moremovies.svg`}
-                alt="Architecture MoreMovies : trois sources, flux ETL Pentaho, base intégrée, entrepôt MySQL et analyses Mondrian."
-                width={1400}
-                height={650}
-                unoptimized
-              />
+          <ProjectVideo demo={projectDemos[0]} />
+        </article>
+      </section>
+
+      <section className="rag-section section-shell" id="rag" aria-labelledby="rag-title">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow"><span /> IA appliquée · Recherche documentaire</p>
+            <h2 id="rag-title">Des documents.<br />Des réponses sourcées.</h2>
+          </div>
+          <p>{projectDemos[1].description}</p>
+        </div>
+        <article className="project project-with-video">
+          <div className="project-copy">
+            <div className="project-meta"><span>06</span><span>RAG · Projet personnel</span></div>
+            <h3>Local Hybrid RAG</h3>
+            <p className="project-lead">Interroger ses documents avec un modèle local.</p>
+            <p>L&apos;application prépare et indexe les documents, recherche les passages
+              pertinents, puis les transmet au modèle pour construire une réponse.
+              Les sources restent consultables pour vérifier ce qu&apos;il avance.</p>
+            <ul className="project-points">
+              <li>Extraction du texte et découpage en passages</li>
+              <li>Recherche hybride : similarité sémantique avec FAISS et mots-clés avec BM25</li>
+              <li>Génération locale avec Ollama et interface Streamlit</li>
+            </ul>
+            <p>Un prototype local : les réponses et leurs citations doivent être vérifiées.</p>
+            <div className="project-links">
+              <a href={`${githubUrl}/Retrieval-Augmented-Generation`} target="_blank" rel="noreferrer">
+                Explorer le projet <ArrowUpRight />
+              </a>
             </div>
-            <span className="screenshot-caption">De la source à l&apos;analyse · agrandir le schéma <ArrowUpRight /></span>
-          </a>
+            <div className="tags"><span>Python</span><span>FAISS / BM25</span><span>Ollama</span><span>Streamlit</span></div>
+          </div>
+          <ProjectVideo demo={projectDemos[1]} />
         </article>
       </section>
 
       <section className="applied section-shell" aria-labelledby="applied-title">
         <p className="eyebrow"><span /> En complément</p>
         <h2 id="applied-title">Des méthodes aux usages.</h2>
-        <p className="applied-intro">Trois projets complémentaires : recherche documentaire, visualisation et algorithmique.</p>
+        <p className="applied-intro">Deux projets complémentaires : visualisation et algorithmique.</p>
         <div className="applied-grid">
           {appliedProjects.map((project) => (
             <article className="applied-card" key={project.repo}>
