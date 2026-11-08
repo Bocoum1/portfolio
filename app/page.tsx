@@ -142,6 +142,7 @@ const projectDemos = [
     title: "MoreMovies",
     duration: "1 min 23",
     file: "moremovies",
+    version: "2",
     description: "Des trois sources à l'entrepôt : suivre le nettoyage, l'intégration et l'analyse des données.",
     note: "Restitution pédagogique complémentaire, créée à partir des données du projet. Ce n'est pas une capture de Power BI ou de Spoon.",
     repo: "moremovies",
@@ -151,6 +152,7 @@ const projectDemos = [
     title: "Local Hybrid RAG",
     duration: "45 s",
     file: "rag",
+    version: "1",
     description: "Poser des questions à ses documents, retrouver les passages utiles et consulter les sources des réponses.",
     note: "Capture de l'application avec Mistral. Temps d'attente raccourcis au montage ; exemple sélectionné, pas un benchmark.",
     repo: "Retrieval-Augmented-Generation",
@@ -167,16 +169,16 @@ function ProjectVideo({ demo }: { demo: (typeof projectDemos)[number] }) {
         </div>
         {/* Le lecteur charge la vidéo à la demande ; WebM sert de repli au MP4. */}
         <video controls playsInline preload="none" width={1080} height={1350}
-          poster={`${basePath}/videos/${demo.file}-poster.png`}
+          poster={`${basePath}/videos/${demo.file}-poster.png?v=${demo.version}`}
           aria-labelledby={`${demo.id}-title`} aria-describedby={`${demo.id}-description`}>
-          <source src={`${basePath}/videos/${demo.file}.mp4`} type="video/mp4" />
-          <source src={`${basePath}/videos/${demo.file}.webm`} type="video/webm" />
+          <source src={`${basePath}/videos/${demo.file}.mp4?v=${demo.version}`} type="video/mp4" />
+          <source src={`${basePath}/videos/${demo.file}.webm?v=${demo.version}`} type="video/webm" />
           Votre navigateur ne prend pas en charge la lecture vidéo.
         </video>
         <figcaption>
           <p className="demo-note" id={`${demo.id}-description`}>{demo.note}</p>
           <div className="project-links">
-            <a href={`${basePath}/videos/${demo.file}.mp4`} target="_blank" rel="noreferrer">
+            <a href={`${basePath}/videos/${demo.file}.mp4?v=${demo.version}`} target="_blank" rel="noreferrer">
               Ouvrir la vidéo <ArrowUpRight />
             </a>
           </div>
@@ -334,7 +336,7 @@ export default function Home() {
           <div className="project-copy">
             <div className="project-meta">
               <span>05</span>
-              <span>Data engineering · Projet universitaire en équipe</span>
+              <span>Data engineering · Projet universitaire réalisé seul</span>
             </div>
             <h3>MoreMovies</h3>
             <p className="project-lead">
