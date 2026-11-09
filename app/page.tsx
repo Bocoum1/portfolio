@@ -70,7 +70,6 @@ const researchProjects: ResearchProject[] = [
     repo: "recursive-kernel-estimation",
     evidence: "3 noyaux · 200 répétitions Monte-Carlo · biais et MSE",
     note: "Simulation à vérité connue. Fonctions originales vérifiées et expérience complémentaire reproductible.",
-    credit: "Projet réalisé seul.",
     details: { path: "recursive-kernel-estimation/tree/main/reports", label: "Rapports" },
     tags: ["R", "Noyaux", "Biais / variance", "Simulation"],
   },
