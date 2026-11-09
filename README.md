@@ -12,14 +12,17 @@ Le design est responsive et dispose d'une mise en page dédiée aux écrans mobi
 
 ## Projets présentés
 
+- **MoreMovies** : intégration de trois sources et entrepôt décisionnel, présenté en premier avec sa vidéo.
 - **Estimation récursive à noyau** : dérivée de régression, simulations Monte-Carlo, biais et MSE.
 - **GLM binomiaux** : logit, probit et cloglog, scoring de Fisher vérifié contre `glm`.
 - **MNIST** : comparaison linéaire / MLP / CNN, trois graines et analyse des erreurs sur un test interne.
 - **House Prices** : validation croisée, prétraitements par pli et analyse d'une erreur d'extrapolation.
 - **Pathfinding** : projet initial en Julia, BFS, Dijkstra, A* et recherche gloutonne sur des grilles.
 
-**Local Hybrid RAG**, **UKRA** et **MoreMovies** figurent dans une rubrique
-complémentaire consacrée aux usages des données.
+**MoreMovies**, **Local Hybrid RAG** et **UKRA** disposent chacun d'une section
+dédiée avec une démonstration vidéo, chargée uniquement à la demande.
+UKRA, réalisé avec Anya Levêque, propose également un lien vers l'application Shiny.
+**Pathfinding** reste présenté dans les projets complémentaires.
 
 Les figures statistiques et d'apprentissage proviennent des expériences R et
 Python des dépôts associés, et non de maquettes. Les contributions en binôme

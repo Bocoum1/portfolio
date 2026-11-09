@@ -59,7 +59,7 @@ type ResearchProject = {
 
 const researchProjects: ResearchProject[] = [
   {
-    id: "01",
+    id: "02",
     category: "Estimation non paramétrique",
     title: "Apprendre une variation locale.",
     description: "Estimer la dérivée d'une fonction de régression bruitée avec trois estimateurs récursifs à noyau. Comparer les erreurs plutôt que seulement regarder les courbes.",
@@ -75,7 +75,7 @@ const researchProjects: ResearchProject[] = [
     tags: ["R", "Noyaux", "Biais / variance", "Simulation"],
   },
   {
-    id: "02",
+    id: "03",
     category: "Modèles linéaires généralisés",
     title: "Comparer trois liens binomiaux.",
     description: "Passer de la vraisemblance à une implémentation du scoring de Fisher, puis comparer logit, probit et cloglog sur une étude dose-réponse.",
@@ -91,7 +91,7 @@ const researchProjects: ResearchProject[] = [
     tags: ["R", "GLM", "Vraisemblance", "Diagnostics"],
   },
   {
-    id: "03",
+    id: "04",
     category: "Deep learning · Classification d'images",
     title: "MNIST : du linéaire au CNN.",
     description: "Comparer un classifieur linéaire, un MLP et un CNN sur les mêmes images. Examiner les courbes d'apprentissage, les erreurs et le coût des architectures.",
@@ -105,7 +105,7 @@ const researchProjects: ResearchProject[] = [
     tags: ["PyTorch", "CNN", "Validation", "Analyse des erreurs"],
   },
   {
-    id: "04",
+    id: "05",
     category: "Machine learning · Régression tabulaire",
     title: "House Prices : au-delà du score.",
     description: "Comparer une référence constante, Ridge, une forêt et le gradient boosting. Apprendre les prétraitements dans chaque pli, puis analyser les erreurs du modèle retenu.",
@@ -123,12 +123,6 @@ const researchProjects: ResearchProject[] = [
 
 const appliedProjects = [
   {
-    title: "UKRA",
-    description: "Analyse spatiale et temporelle des accidents routiers dans un tableau de bord interactif.",
-    repo: "UKRA",
-    tools: "R · Shiny · Plotly · Leaflet",
-  },
-  {
     title: "Pathfinding",
     description: "Comparaison de BFS, Dijkstra, A* et de la recherche gloutonne sur des grilles avec obstacles.",
     repo: "Pathfinding",
@@ -143,6 +137,8 @@ const projectDemos = [
     duration: "1 min 23",
     file: "moremovies",
     version: "2",
+    width: 1080,
+    height: 1350,
     description: "Des trois sources à l'entrepôt : suivre le nettoyage, l'intégration et l'analyse des données.",
     note: "Restitution pédagogique complémentaire, créée à partir des données du projet. Ce n'est pas une capture de Power BI ou de Spoon.",
     repo: "moremovies",
@@ -153,9 +149,23 @@ const projectDemos = [
     duration: "45 s",
     file: "rag",
     version: "1",
+    width: 1080,
+    height: 1350,
     description: "Poser des questions à ses documents, retrouver les passages utiles et consulter les sources des réponses.",
     note: "Capture de l'application avec Mistral. Temps d'attente raccourcis au montage ; exemple sélectionné, pas un benchmark.",
     repo: "Retrieval-Augmented-Generation",
+  },
+  {
+    id: "demo-ukra",
+    title: "UKRA",
+    duration: "40 s",
+    file: "ukra",
+    version: "1",
+    width: 1440,
+    height: 1000,
+    description: "Explorer les accidents, filtrer une année et comparer les territoires et les circonstances.",
+    note: "Capture de l'application Shiny : vue globale, filtre 2022, facteurs et analyse temporelle. Travail en binôme avec Anya Levêque.",
+    repo: "UKRA",
   },
 ];
 
@@ -168,7 +178,8 @@ function ProjectVideo({ demo }: { demo: (typeof projectDemos)[number] }) {
           <span>{demo.duration} · Sans son</span>
         </div>
         {/* Le lecteur charge la vidéo à la demande ; WebM sert de repli au MP4. */}
-        <video controls playsInline preload="none" width={1080} height={1350}
+        <video controls playsInline preload="none" width={demo.width} height={demo.height}
+          style={{ aspectRatio: `${demo.width} / ${demo.height}` }}
           poster={`${basePath}/videos/${demo.file}-poster.png?v=${demo.version}`}
           aria-labelledby={`${demo.id}-title`} aria-describedby={`${demo.id}-description`}>
           <source src={`${basePath}/videos/${demo.file}.mp4?v=${demo.version}`} type="video/mp4" />
@@ -280,16 +291,56 @@ export default function Home() {
       <section className="projects section-shell" id="projets">
         <div className="section-heading">
           <div>
-            <p className="eyebrow"><span /> Travaux sélectionnés</p>
-            <h2>Des hypothèses.<br />Des résultats vérifiables.</h2>
+            <p className="eyebrow"><span /> Travaux sélectionnés · Ingénierie des données · BI</p>
+            <h2>Trois sources.<br />Une vision commune.</h2>
           </div>
-          <p>
-            Statistiques, machine learning, deep learning et ingénierie des données :
-            des questions précises, du code, des expériences et une lecture critique
-            des résultats. Les applications viennent en complément.
-          </p>
+          <p>Relier des données hétérogènes, contrôler leur cohérence et construire
+            un entrepôt pour analyser les ventes et les locations.</p>
         </div>
 
+        <article className="project project-moremovies project-with-video" id="moremovies">
+          <div className="project-copy">
+            <div className="project-meta">
+              <span>01</span>
+              <span>Data engineering · Projet universitaire réalisé seul</span>
+            </div>
+            <h3>MoreMovies</h3>
+            <p className="project-lead">
+              Des données sources à l&apos;analyse décisionnelle.
+            </p>
+            <p>
+              Trois enseignes décrivent leurs clients, produits et transactions
+              différemment. Ce projet consolide leurs données dans un modèle commun,
+              puis alimente un entrepôt MySQL pour explorer l&apos;activité par magasin,
+              produit et période.
+            </p>
+            <ul className="project-points">
+              <li>Nettoyage et harmonisation des identifiants avec Pentaho PDI</li>
+              <li>Entrepôt ROLAP : 4 dimensions, 2 tables de faits et 3 agrégats</li>
+              <li>Cubes Mondrian, requêtes MDX et préparation du reporting</li>
+            </ul>
+            <div className="project-links">
+              <a href="https://github.com/Bocoum1/moremovies" target="_blank" rel="noreferrer">
+                Explorer le projet <ArrowUpRight />
+              </a>
+              <a href="https://github.com/Bocoum1/moremovies/blob/main/docs/architecture.md" target="_blank" rel="noreferrer">
+                Architecture et choix techniques <GithubMark />
+              </a>
+            </div>
+            <div className="tags">
+              <span>MySQL</span><span>Pentaho PDI</span><span>ETL</span><span>Mondrian / MDX</span>
+            </div>
+          </div>
+          <ProjectVideo demo={projectDemos[0]} />
+        </article>
+
+        <div className="section-heading complementary-heading">
+          <div>
+            <p className="eyebrow"><span /> Statistiques · Machine learning · Deep learning</p>
+            <h2>Des hypothèses.<br />Des résultats vérifiables.</h2>
+          </div>
+          <p>Des questions précises, du code, des expériences et une lecture critique des résultats.</p>
+        </div>
         <div className="research-grid">
           {researchProjects.map((project) => (
             <article className="research-card" key={project.repo}>
@@ -322,51 +373,6 @@ export default function Home() {
             </article>
           ))}
         </div>
-
-        <div className="section-heading complementary-heading">
-          <div>
-            <p className="eyebrow"><span /> Ingénierie des données · BI</p>
-            <h2>Trois sources.<br />Une vision commune.</h2>
-          </div>
-          <p>Relier des données hétérogènes, contrôler leur cohérence et construire
-            un entrepôt pour analyser les ventes et les locations.</p>
-        </div>
-
-        <article className="project project-moremovies project-with-video" id="moremovies">
-          <div className="project-copy">
-            <div className="project-meta">
-              <span>05</span>
-              <span>Data engineering · Projet universitaire réalisé seul</span>
-            </div>
-            <h3>MoreMovies</h3>
-            <p className="project-lead">
-              Des données sources à l&apos;analyse décisionnelle.
-            </p>
-            <p>
-              Trois enseignes décrivent leurs clients, produits et transactions
-              différemment. Ce projet consolide leurs données dans un modèle commun,
-              puis alimente un entrepôt MySQL pour explorer l&apos;activité par magasin,
-              produit et période.
-            </p>
-            <ul className="project-points">
-              <li>Nettoyage et harmonisation des identifiants avec Pentaho PDI</li>
-              <li>Entrepôt ROLAP : 4 dimensions, 2 tables de faits et 3 agrégats</li>
-              <li>Cubes Mondrian, requêtes MDX et préparation du reporting</li>
-            </ul>
-            <div className="project-links">
-              <a href="https://github.com/Bocoum1/moremovies" target="_blank" rel="noreferrer">
-                Explorer le projet <ArrowUpRight />
-              </a>
-              <a href="https://github.com/Bocoum1/moremovies/blob/main/docs/architecture.md" target="_blank" rel="noreferrer">
-                Architecture et choix techniques <GithubMark />
-              </a>
-            </div>
-            <div className="tags">
-              <span>MySQL</span><span>Pentaho PDI</span><span>ETL</span><span>Mondrian / MDX</span>
-            </div>
-          </div>
-          <ProjectVideo demo={projectDemos[0]} />
-        </article>
       </section>
 
       <section className="rag-section section-shell" id="rag" aria-labelledby="rag-title">
@@ -402,10 +408,52 @@ export default function Home() {
         </article>
       </section>
 
+      <section className="ukra-section section-shell" id="ukra" aria-labelledby="ukra-title">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow"><span /> Business intelligence · Visualisation</p>
+            <h2 id="ukra-title">Où, quand,<br />dans quelles conditions ?</h2>
+          </div>
+          <p>Explorer les accidents routiers au Royaume-Uni en 2021 et 2022,
+            du panorama national aux différences entre districts.</p>
+        </div>
+        <article className="ukra-showcase">
+          <div className="ukra-summary">
+            <div>
+              <p className="research-category">07 / R Shiny · Projet universitaire</p>
+              <h3>UKRA</h3>
+              <p>Un tableau de bord interactif pour suivre le nombre d&apos;accidents,
+                leur gravité et leur répartition dans le temps et l&apos;espace.
+                Les filtres mettent à jour les indicateurs, les graphiques et la carte.</p>
+              <p className="research-credit">Réalisé en binôme avec Anya Levêque.</p>
+            </div>
+            <div>
+              <ul className="project-points">
+                <li>Indicateurs de synthèse et évolution mensuelle</li>
+                <li>Cartographie et comparaison des districts</li>
+                <li>Analyse selon la météo, la luminosité et les caractéristiques routières</li>
+              </ul>
+              <p className="demo-note">Les volumes et associations observés ne mesurent pas
+                le risque par trajet et ne permettent pas d&apos;établir des causes.</p>
+              <div className="project-links">
+                <a href="https://datascienceappli.shinyapps.io/Securite_routiere/" target="_blank" rel="noreferrer">
+                  Tester l&apos;application <ArrowUpRight />
+                </a>
+                <a href={`${githubUrl}/UKRA`} target="_blank" rel="noreferrer">
+                  Voir le code <GithubMark />
+                </a>
+              </div>
+              <div className="tags"><span>R</span><span>Shiny</span><span>Plotly</span><span>Leaflet</span></div>
+            </div>
+          </div>
+          <ProjectVideo demo={projectDemos[2]} />
+        </article>
+      </section>
+
       <section className="applied section-shell" aria-labelledby="applied-title">
         <p className="eyebrow"><span /> En complément</p>
         <h2 id="applied-title">Des méthodes aux usages.</h2>
-        <p className="applied-intro">Deux projets complémentaires : visualisation et algorithmique.</p>
+        <p className="applied-intro">Un projet complémentaire pour explorer les algorithmes de recherche de chemin.</p>
         <div className="applied-grid">
           {appliedProjects.map((project) => (
             <article className="applied-card" key={project.repo}>
